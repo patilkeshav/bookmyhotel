@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MaterialModule } from './modules/material/material.module';
+import { CustomerModule } from './modules/customer/customer.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    MaterialModule,
+    CustomerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
