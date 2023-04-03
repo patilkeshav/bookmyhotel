@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Edit Details</h1>
+<div mat-dialog-content>
+    <form [formGroup]=" editBookingForm">
+    <div class="mt-2 row">
+    <mat-form-field appearance="fill">
+        <mat-label>CheckInDate and checkOutDate</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate formControlName="checkInDate" placeholder="checkInDate">
+          <input matEndDate formControlName="checkOutDate" placeholder="checkOutDate">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancle()">cancle</button>
+  <button mat-button (click)="save()">save</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+</div>
+

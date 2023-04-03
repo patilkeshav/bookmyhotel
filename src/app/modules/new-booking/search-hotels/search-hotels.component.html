@@ -1,0 +1,52 @@
+<h2>Search Hotels</h2>
+<div class="container-fluid mt-2">
+    <form [formGroup]="searchHotel" (ngSubmit)="saveForm()" class="example-form">
+        <div class="row">
+            <div class="col-md-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>select City</mat-label>
+                      <input type="text"
+                             placeholder="Pick one"
+                             aria-label="Number"
+                             matInput
+                             formControlName="city"
+                             [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [formGroup]="searchHotel" [rangePicker]="picker">
+                      <input matStartDate formControlName="checkInDate" placeholder="checkInDate">
+                      <input matEndDate formControlName="checkOutDate" placeholder="checkOutDate">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+
+            </div>
+            
+            <div class="col-md-6 mt-2 adults-container">
+                <div class="container border">
+                    <div class="m-3 ">
+                        <span class="m-2 fs-6">Adults<span class="float-end"><mat-icon class="text-primary" (click)="adultsChange('Decrement')">remove_circle_outline</mat-icon><span class="mx-2 fs-6">{{searchHotel.value.adults}}</span><mat-icon class="text-primary" (click)="adultsChange('Increment')">add_circle_outline</mat-icon></span></span>
+                    </div><br>
+                    <div class="m-3">
+                        <span class="m-2 fs-6">Childrens<span class="float-end"><mat-icon class="text-primary" (click)="childrenChange('Decrement')">remove_circle_outline</mat-icon><span class="mx-2 fs-6">{{searchHotel.value.children}}</span><mat-icon class="text-primary" (click)="childrenChange('Increment')">add_circle_outline</mat-icon></span></span>
+                    </div>
+                </div>
+                  
+            </div>
+        </div>
+        <div class="mt-5">
+            <button type="button" class="btn btn-primary m-3">Back</button>
+            <button matStepperNext type="submit"  class="btn btn-primary" [disabled]="searchHotel.invalid">Save</button>
+        </div>
+    </form>
+</div>

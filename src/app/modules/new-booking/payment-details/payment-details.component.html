@@ -1,0 +1,54 @@
+
+
+<div class="container mt-4 w-50">
+  <h1 >Payment Details</h1>
+  <form [formGroup]="paymentForm" (ngSubmit)="SavePaymentForm()">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Name on card</mat-label>
+        <input matInput  formControlName="name">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Debit/Credit card Number</mat-label>
+        <input matInput formControlName="debitCardNumber">
+      </mat-form-field>
+    </div>
+      <div class="col-md-8">
+        <mat-form-field appearance="fill">
+          <mat-label>Month</mat-label>
+          <mat-select formControlName="expirymonth">
+            <mat-option *ngFor="let month of monthList" [value]="month.value">
+              {{month.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span class="m-1">
+          <mat-form-field appearance="fill" >
+            <mat-label>Year</mat-label>
+            <mat-select formControlName="expiryYear">
+              <mat-option *ngFor="let year of yearList" [value]="year">
+                {{year}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>Security Code</mat-label>
+          <input matInput formControlName="SecurityCode">
+        </mat-form-field>
+      </div>
+       
+
+    </div>
+    <div class="mt-5">
+      <button matStepperPrevious type="button" class="btn btn-primary m-2">Back</button>
+      <button type="submit" class="btn btn-primary" (click)="confirmPayment()" [disabled]="paymentForm.invalid">confirm Payment</button>
+    </div>
+  </form>
+ 
+  </div>

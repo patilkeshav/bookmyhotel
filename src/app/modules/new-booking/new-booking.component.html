@@ -1,0 +1,48 @@
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="parentForm">
+      <form [formGroup]="parentForm">
+        <ng-template matStepLabel>Search Hotels</ng-template>
+       <app-search-hotels></app-search-hotels>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="parentForm">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Choose Hotel</ng-template>
+        <app-choose-hotel></app-choose-hotel>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="parentForm">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Choose Room</ng-template>
+        <app-choose-room></app-choose-room>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="parentForm">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Personal Information</ng-template>
+        <app-personal-info></app-personal-info>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="parentForm">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Geust Information</ng-template>
+        <app-guest-info></app-guest-info>
+    </form>
+  </mat-step>
+    <mat-step [stepControl]="parentForm" label="Fill out your address">
+      <form [formGroup]="parentForm">
+        <ng-template matStepLabel>Payment Details</ng-template>
+        <app-payment-details [stepper]="stepper"></app-payment-details>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="parentForm" label="Fill out your address">
+      <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Booking Done</ng-template>
+      <app-finish-booking></app-finish-booking>
+    </form>
+    </mat-step>
+  </mat-stepper>
+  

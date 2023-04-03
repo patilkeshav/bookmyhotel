@@ -1,0 +1,56 @@
+<h2>Geust Information</h2>
+<div class="container-fluid">
+  <form [formGroup]="guestForm" (ngSubmit)="saveGuestInfo()">
+    <div formArrayName="guests">
+        <div class="row" *ngFor="let item of guests.controls;let i=index">
+          <ng-container [formGroupName]="i">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>Customer Name</mat-label>
+              <input matInput formControlName="customerName">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Mobile No.</mat-label>
+              <span matPrefix>+91 &nbsp;</span>
+              <input type="tel" matInput placeholder="555-555-1234" formControlName="mobileNo">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 example-full-width">
+            <mat-form-field appearance="fill" class="example-full-width" >
+              <mat-label>Date Of Birth</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 mt-2">
+            <mat-label>Gender &nbsp;:</mat-label>
+            <mat-radio-group aria-label="Select an option" formControlName="gender">
+              <mat-radio-button value="Male">Male</mat-radio-button>
+              <mat-radio-button value="Female">Female</mat-radio-button>
+              <mat-radio-button value="Others">others</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="text-end">
+            <button mat-fab class="m-3" color="primary" (click)="addGuest()" *ngIf="(guests.controls.length-1)==i">
+              <mat-icon>add_circle</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="removeGuests(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+        </div>
+      </div>
+</form>
+</div>
+
+  <div class="mt-5">
+    <button matStepperPrevious type="button" class="btn btn-primary m-3">Back</button>
+    <button matStepperNext type="submit" class="btn btn-primary" [disabled]="guestForm.invalid">Save&Next</button>
+  </div>
+

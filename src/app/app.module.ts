@@ -6,10 +6,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MaterialModule } from './modules/material/material.module';
 import { CustomerModule } from './modules/customer/customer.module';
+import { CoreModule } from './modules/core/core.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AllBookingsComponent } from './components/all-bookings/all-bookings.component';
+import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AllBookingsComponent,
+    EditBookingComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,7 +26,10 @@ import { CustomerModule } from './modules/customer/customer.module';
     BrowserAnimationsModule,
     CarouselModule,
     MaterialModule,
-    CustomerModule
+    CoreModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
