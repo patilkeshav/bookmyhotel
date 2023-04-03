@@ -1,0 +1,50 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row color="primary">
+      <div class="ms-5">
+        <!-- <span mat-icon-button  aria-label="Example icon-button with menu icon"> -->
+          <a mat-icon-button  (click)="drawer.toggle()">
+           <mat-icon class="example-icon mt-1 cursor">menu</mat-icon>
+          </a>
+         
+        <!-- </span> -->
+        <a class="ms-3 text-decoration-none text-white">BookMyHotel</a>
+      </div>
+      <span class="example-spacer"></span>
+      <div class="p-5 cursor">
+        <a class="fs-6 p-3 text-decoration-none text-white" mat-button>Register</a>
+        <a class="fs-6 p-3 text-decoration-none text-white" mat-button>Sign in</a>
+        
+      </div>
+  
+    </mat-toolbar-row>
+    <mat-toolbar-row color="primary">
+      <div class="ms-5 cursor">
+      <a class="m-3 fs-6 text-decoration-none text-white cursor" routerLinkActive="highlight" routerLink="/home"><mat-icon class="pt-1 me-1">bed</mat-icon>Hotels</a>
+      <a class="m-3 fs-6 text-decoration-none text-white"  routerLinkActive="highlight"><mat-icon class="pt-1 me-1">flight</mat-icon>Flights</a>
+      <a class="m-3 fs-6 text-decoration-none text-white"  routerLinkActive="highlight"><mat-icon class="pt-1 me-1">hotel</mat-icon>Flight+Hotel</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-list role="list">
+        <mat-list-item role="listitem" routerLinkActive="highlight">Dashboard</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem" routerLinkActive="highlight" routerLink="/new-booking">New booking</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"  routerLinkActive="highlight" routerLink="/allbooking">All Booking</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+  
+    </mat-drawer>
+    <router-outlet></router-outlet>
+  </mat-drawer-container>
+
+
+
+
+
+
+
+

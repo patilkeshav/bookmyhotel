@@ -1,0 +1,34 @@
+<p>choose-room works!</p>
+<div class="container-fluid mt-2">
+  <form [formGroup]="chooseRoom" (ngSubmit)="saveForm()">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Select RoomType</mat-label>
+          <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="roomType"
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Select AC/NonAc</mat-label>
+          <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="Ac/NonAc"
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious type="button" class="btn btn-outline-primary">Back</button>
+        <button mat-button matStepperPrevious type="button" class="m-3 btn btn-outline-primary">Save</button>
+        <button mat-button matStepperNext type="button" class="btn btn-outline-primary">Next</button>
+      </div>
+    </div>
